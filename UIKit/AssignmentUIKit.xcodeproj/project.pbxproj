@@ -21,6 +21,7 @@
 		4F857E5825598613003874BE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E5725598613003874BE /* BaseTableViewController.swift */; };
 		4F857E6125598A4E003874BE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E6025598A4E003874BE /* City.swift */; };
 		4F857E6925599611003874BE /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E6825599611003874BE /* AppData.swift */; };
+		4F857E6F2559997F003874BE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E6E2559997F003874BE /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4F857E5725598613003874BE /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		4F857E6025598A4E003874BE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		4F857E6825599611003874BE /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		4F857E6E2559997F003874BE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				4F857E4F25597D3B003874BE /* Extensions.swift */,
-				4F857E6825599611003874BE /* AppData.swift */,
 				4F857E3E25597C05003874BE /* API.swift */,
+				4F857E6825599611003874BE /* AppData.swift */,
+				4F857E6E2559997F003874BE /* Network.swift */,
 				4F857E222559747B003874BE /* First */,
 				4F857E2425597489003874BE /* Second */,
 				4F857E2325597482003874BE /* Third */,
@@ -344,6 +347,7 @@
 				4F857E6125598A4E003874BE /* City.swift in Sources */,
 				4F857E5825598613003874BE /* BaseTableViewController.swift in Sources */,
 				4F857E2F255976D2003874BE /* BaseViewController.swift in Sources */,
+				4F857E6F2559997F003874BE /* Network.swift in Sources */,
 				4F857DDD25595CFA003874BE /* AppDelegate.swift in Sources */,
 				4F857DDF25595CFA003874BE /* SceneDelegate.swift in Sources */,
 				4F857E3F25597C05003874BE /* API.swift in Sources */,
