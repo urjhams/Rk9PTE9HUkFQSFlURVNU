@@ -9,19 +9,24 @@ import UIKit
 
 final class AddCityViewController: BaseViewController {
     
-    let navigationBar: UINavigationBar = {
+    private let navigationBar: UINavigationBar = {
         let bar = UINavigationBar()
         bar.translatesAutoresizingMaskIntoConstraints = false
         return bar
     }()
     
-    let nameTextField: UITextField = {
+    private lazy var nameTextField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "City name (e.g: London)"
         field.borderStyle = .roundedRect
+        field.delegate = self
         return field
     }()
+    
+    private let finishItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                             target: self,
+                                             action: #selector(finishClick))
     
     var delegate: AddCityDelegate?
     
@@ -49,9 +54,7 @@ extension AddCityViewController {
                                          target: self,
                                          action: #selector(cancelClick))
         
-        let finishItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                         target: self,
-                                         action: #selector(finishClick))
+        finishItem.isEnabled = false
         
         let barItem = UINavigationItem(title: "")
         
@@ -66,8 +69,8 @@ extension AddCityViewController {
     }
     
     @objc private func finishClick(_ sender: Any) {
-        dismiss(animated: true) {
-            
+        dismiss(animated: true) { [weak self] in
+            self?.delegate?.didAddNewCity(self?.nameTextField.text)
         }
     }
     
@@ -78,5 +81,14 @@ extension AddCityViewController {
                                              constant: -32).isActive = true
         nameTextField.topAnchor.constraint(equalTo: navigationBar.bottomAnchor,
                                            constant: 32).isActive = true
+    }
+}
+
+extension AddCityViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == nameTextField {
+            finishItem.isEnabled = (textField.text?.count ?? 0 > 0)
+        }
     }
 }

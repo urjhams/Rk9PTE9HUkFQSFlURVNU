@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddCityDelegate: AnyObject {
-    func didAddNewCity(_ name: String)
+    func didAddNewCity(_ name: String?)
 }
 
 final class CitiesViewController: BaseTableViewController {
@@ -58,8 +58,8 @@ extension CitiesViewController {
 
 //MARK: - AddCityDelegate
 extension CitiesViewController: AddCityDelegate {
-    func didAddNewCity(_ name: String) {
-        
+    func didAddNewCity(_ name: String?) {
+        guard let name = name else { return }
     }
 }
 
