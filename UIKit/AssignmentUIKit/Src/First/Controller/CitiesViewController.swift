@@ -29,8 +29,9 @@ final class CitiesViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // load api
-        print(AppData.savedCities)
+        loadCities() {[weak self] in
+            self?.gotListCities(from: $0)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +71,18 @@ extension CitiesViewController {
 }
 
 extension CitiesViewController {
+    
+    private func gotListCities(from data: Data) {
+        do {
+            let model = try JSONDecoder().decode(ListCityWeather.self, from: data)
+            if let list = model.list {
+                cities = list
+            }
+        } catch {
+            showNotificationAlert("Error", withContent: error.localizedDescription)
+        }
+    }
+    
     private func saveCities() {
         let data = cities.map { return CityData(from: $0) }
         AppData.savedCities = data

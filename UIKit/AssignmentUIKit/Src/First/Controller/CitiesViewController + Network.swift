@@ -21,4 +21,32 @@ extension CitiesViewController {
             }
         }
     }
+    
+    internal func loadCities(success: @escaping (Data)->Void) {
+        guard AppData.savedCities.count > 0 else { return }
+        let list = AppData.savedCities
+        let ids = list.map { return $0.id }
+        
+        let key = API.secrectKey
+        var url = API.weatherByCities + "?id="
+        
+        for index in 0..<ids.count {
+            let id = ids[index]
+            
+            // append the ids after the first one with "," before
+            url = url + ((index == 0) ? "\(id)" : ",\(id)")
+        }
+        
+        // final url
+        url = url + "&appid=\(key)"
+        
+        Network.shared.sendPostRequest(to: url) { [weak self] in
+            switch $0 {
+            case .failure(let error):
+                self?.showNotificationAlert("Error", withContent: error.localizedDescription)
+            case .success(let data):
+                success(data)
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ final class CityTableViewCell: UITableViewCell {
     public var city: CityWeather? {
         didSet {
             cityNameLabel.text = city?.name
-            let temp = city?.main?.temp ?? 0
+            let temp = city?.main.temp ?? 0
             cityTemperatureLabel.text = "\(temp.fromKevinToCelsius())" + "ºC"
         }
     }

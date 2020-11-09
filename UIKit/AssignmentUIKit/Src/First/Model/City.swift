@@ -7,20 +7,25 @@
 
 import Foundation
 
+struct ListCityWeather: Codable {
+    var cnt: Int
+    var list: [CityWeather]?
+}
+
 struct CityWeather: Codable {
-    var coord: Coordinate?
-    var weather: [Weather]?
-    var base: String
-    var main: WeatherMain?
-    var visibility: Int
-    var wind: WeatherWind?
-    var clouds: WeatherCloud?
-    var dt: Int
-    var sys: WeatherSys?
-    var timezone: Int
-    var id: Int
-    var name: String
-    var cod: Int
+    var coord: Coordinate      // always have
+    var weather: [Weather]     // always have
+    var base: String?
+    var main: WeatherMain      // always have
+    var visibility: Int         // always have
+    var wind: WeatherWind      // always have
+    var clouds: WeatherCloud   // always have
+    var dt: TimeInterval       // always have
+    var sys: WeatherSys        // always have
+    var timezone: Int?
+    var id: Int                 // always have
+    var name: String            // always have
+    var cod: Int?
 }
 
 struct Coordinate: Codable {
@@ -54,9 +59,10 @@ struct WeatherCloud: Codable {
 }
 
 struct WeatherSys: Codable {
-    var type: Int
-    var id: Int
+    var type: Int?
+    var id: Int?
     var country: String
     var sunrise: TimeInterval
     var sunset: TimeInterval
+    var timezone: Int?
 }

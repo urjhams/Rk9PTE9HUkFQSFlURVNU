@@ -13,15 +13,14 @@ final class CityDetailMainTableViewCell: UITableViewCell {
         didSet {
             
             nameLabel.text = city?.name
-            
-            if let weather = city?.weather?.first {
+            if let weather = city?.weather.first {
                 descriptionLabel.text = weather.description
             }
             
-            let temp = city?.main?.temp ?? 0
+            let temp = city?.main.temp ?? 0
             tempLabel.text = "\(Int(temp.fromKevinToCelsius()))" + "ºC"
             
-            if let humidity = city?.main?.humidity {
+            if let humidity = city?.main.humidity {
                 humidityLabel.text = "humidity: \(humidity)" + "%"
             }
         }
