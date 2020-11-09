@@ -65,9 +65,21 @@ extension CitiesViewController {
     private func setupTableView() {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: CityTableViewCell.className)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+        tableView.addGestureRecognizer(longPress)
+    }
+    
+    @objc private func longPressHandler(_ sender: UILongPressGestureRecognizer) {
+        guard sender.state == UIGestureRecognizer.State.began else { return }
+        let touchPoint = sender.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
+        handleDeleteCity(at: indexPath.row)
     }
     
     private func setupRefresher() {
@@ -87,6 +99,27 @@ extension CitiesViewController {
 }
 
 extension CitiesViewController {
+    
+    private func handleDeleteCity(at index: Int) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+        let alert = UIAlertController(title: "Delete this city",
+                                      message: "Are you sure?",
+                                      preferredStyle: .actionSheet)
+        
+        let acceptAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            self?.cities.remove(at: index)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(acceptAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+        
+    }
     
     private func getListCitiesHandle(from data: Data) {
         do {
