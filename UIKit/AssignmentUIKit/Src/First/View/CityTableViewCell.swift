@@ -12,7 +12,8 @@ final class CityTableViewCell: UITableViewCell {
     public var city: CityWeather? {
         didSet {
             cityNameLabel.text = city?.name
-            cityTemperatureLabel.text = String(city?.main?.temp ?? 0)
+            let temp = city?.main?.temp ?? 0
+            cityTemperatureLabel.text = "\(temp.fromKevinToCelsius()))" + "ºC"
         }
     }
     
@@ -32,7 +33,7 @@ final class CityTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "55"
+        label.text = "_ _ºC"
         return label
     }()
 
@@ -64,13 +65,17 @@ extension CityTableViewCell {
         let maxNameWidth: CGFloat = maxTempWidth * 3
         
         contentView.addSubview(cityTemperatureLabel)
-        cityTemperatureLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -aligment).isActive = true
-        cityTemperatureLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalAligment).isActive = true
-        cityTemperatureLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -verticalAligment).isActive = true
+        cityTemperatureLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                       constant: -aligment).isActive = true
+        cityTemperatureLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                                  constant: verticalAligment).isActive = true
+        cityTemperatureLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                                     constant: -verticalAligment).isActive = true
         cityTemperatureLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxTempWidth).isActive = true
         
         contentView.addSubview(cityNameLabel)
-        cityNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: aligment).isActive = true
+        cityNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                               constant: aligment).isActive = true
         cityNameLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxNameWidth).isActive = true
         cityNameLabel.centerYAnchor.constraint(equalTo: cityTemperatureLabel.centerYAnchor).isActive = true
     }
