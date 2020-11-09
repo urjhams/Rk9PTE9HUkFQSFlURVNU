@@ -28,6 +28,7 @@ extension CitiesViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = cities[indexPath.row]
         let destination = CityDetailViewController(model: model, currentIndex: indexPath.row)
+        destination.delegate = self
         navigationController?.pushViewController(destination, animated: true)
     }
     

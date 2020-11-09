@@ -29,12 +29,13 @@ final class CitiesViewController: BaseTableViewController {
     override func loadView() {
         super.loadView()
         setupTableView()
+        setupRefresher()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCities() {[weak self] in
-            self?.gotListCities(from: $0)
+        loadCities() { [weak self] in
+            self?.getListCitiesHandle(from: $0)
         }
     }
     
@@ -70,18 +71,27 @@ extension CitiesViewController {
     }
     
     private func setupRefresher() {
-        
+        refresher.tintColor = .systemGray
+        refresher.addTarget(self, action: #selector(reloadListCities), for: .valueChanged)
+        tableView.refreshControl = refresher
+    }
+    
+    @objc private func reloadListCities() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.loadCities() {
+                self?.getListCitiesHandle(from: $0)
+                self?.refresher.endRefreshing()
+            }
+        }
     }
 }
 
 extension CitiesViewController {
     
-    private func gotListCities(from data: Data) {
+    private func getListCitiesHandle(from data: Data) {
         do {
             let model = try JSONDecoder().decode(ListCityWeather.self, from: data)
-            if let list = model.list {
-                cities = list
-            }
+            if let list = model.list { cities = list }
         } catch {
             showNotificationAlert("Error", withContent: error.localizedDescription)
         }
