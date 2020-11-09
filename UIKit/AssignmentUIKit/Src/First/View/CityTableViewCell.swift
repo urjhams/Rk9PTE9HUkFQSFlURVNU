@@ -9,6 +9,13 @@ import UIKit
 
 final class CityTableViewCell: UITableViewCell {
     
+    public var city: CityWeather? {
+        didSet {
+            cityNameLabel.text = city?.name
+            cityTemperatureLabel.text = String(city?.main?.temp ?? 0)
+        }
+    }
+    
     private let cityNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -24,7 +31,7 @@ final class CityTableViewCell: UITableViewCell {
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.text = "55"
         return label
     }()

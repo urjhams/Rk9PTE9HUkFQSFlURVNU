@@ -12,7 +12,13 @@ protocol AddCityDelegate: AnyObject {
 }
 
 final class CitiesViewController: BaseTableViewController {
-
+    
+    public var cities = [CityWeather]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         setupTableView()
@@ -59,29 +65,23 @@ extension CitiesViewController {
 //MARK: - AddCityDelegate
 extension CitiesViewController: AddCityDelegate {
     func didAddNewCity(_ name: String?) {
-        guard let name = name else { return }
-    }
-}
-
-// MARK: - tableView delegate & datasource
-extension CitiesViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(of: CityTableViewCell.self, for: indexPath)
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let destination = CityDetailViewController()
-        navigationController?.pushViewController(destination, animated: true)
+        guard let name = name else { fatalError("There must be a name in this point") }
+        loadWeather(of: name) { [weak self] in
+            do {
+                let model = try JSONDecoder().decode(CityWeather.self, from: $0)
+                
+                for index in 0..<(self?.cities ?? [CityWeather]()).count {
+                    // if city is already added, just reload the data
+                    if model.id == self?.cities[index].id {
+                        self?.cities[index] = model
+                        return
+                    }
+                }
+                
+                self?.cities.append(model)
+            } catch {
+                self?.showNotificationAlert("Error", withContent: error.localizedDescription)
+            }
+        }
     }
 }

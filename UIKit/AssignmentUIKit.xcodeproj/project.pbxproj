@@ -24,6 +24,8 @@
 		4F857E6F2559997F003874BE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E6E2559997F003874BE /* Network.swift */; };
 		4F857E7D2559AE62003874BE /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E7C2559AE62003874BE /* AddCityViewController.swift */; };
 		4F857E872559B083003874BE /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E862559B083003874BE /* CityDetailViewController.swift */; };
+		4F857E8F2559BA8A003874BE /* CitiesViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E8E2559BA8A003874BE /* CitiesViewController + TableView.swift */; };
+		4F857E942559BA9B003874BE /* CitiesViewController + Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857E932559BA9B003874BE /* CitiesViewController + Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		4F857E6E2559997F003874BE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4F857E7C2559AE62003874BE /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		4F857E862559B083003874BE /* CityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
+		4F857E8E2559BA8A003874BE /* CitiesViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CitiesViewController + TableView.swift"; sourceTree = "<group>"; };
+		4F857E932559BA9B003874BE /* CitiesViewController + Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CitiesViewController + Network.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				4F857E25255974A6003874BE /* CitiesViewController.swift */,
+				4F857E8E2559BA8A003874BE /* CitiesViewController + TableView.swift */,
+				4F857E932559BA9B003874BE /* CitiesViewController + Network.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -365,8 +371,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F857E4825597D30003874BE /* CityTableViewCell.swift in Sources */,
+				4F857E8F2559BA8A003874BE /* CitiesViewController + TableView.swift in Sources */,
 				4F857E26255974A6003874BE /* CitiesViewController.swift in Sources */,
 				4F857E6125598A4E003874BE /* City.swift in Sources */,
+				4F857E942559BA9B003874BE /* CitiesViewController + Network.swift in Sources */,
 				4F857E5825598613003874BE /* BaseTableViewController.swift in Sources */,
 				4F857E2F255976D2003874BE /* BaseViewController.swift in Sources */,
 				4F857E6F2559997F003874BE /* Network.swift in Sources */,

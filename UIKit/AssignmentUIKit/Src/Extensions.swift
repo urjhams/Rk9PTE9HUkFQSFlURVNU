@@ -38,6 +38,12 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    func showNotificationAlert(_ title: String?, withContent content: String?) {
+        let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    
     func showActionAlert(_ title: String?, withContent content: String?, actions: [UIAlertAction]? = nil) {
         let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
         if let actions = actions {

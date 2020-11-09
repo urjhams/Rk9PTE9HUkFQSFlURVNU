@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct cityWeather: Codable {
+struct CityWeather: Codable {
     var coord: Coordinate?
     var weather: [Weather]?
     var base: String
