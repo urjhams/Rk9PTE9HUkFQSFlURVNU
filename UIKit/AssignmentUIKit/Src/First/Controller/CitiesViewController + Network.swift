@@ -15,7 +15,14 @@ extension CitiesViewController {
         Network.shared.sendPostRequest(to: url) { [weak self] in
             switch $0 {
             case .failure(let error):
-                self?.showNotificationAlert("Error", withContent: error.localizedDescription)
+                switch error {
+                case .httpSeverSideError(_, statusCode: _):
+                    self?.showNotificationAlert("Error",
+                                                withContent: "City name not found, please try again")
+                default:
+                    self?.showNotificationAlert("Error",
+                                                withContent: error.localizedDescription)
+                }
             case .success(let data):
                 success(data)
             }
@@ -43,7 +50,8 @@ extension CitiesViewController {
         Network.shared.sendPostRequest(to: url) { [weak self] in
             switch $0 {
             case .failure(let error):
-                self?.showNotificationAlert("Error", withContent: error.localizedDescription)
+                self?.showNotificationAlert("Error",
+                                            withContent: error.localizedDescription)
             case .success(let data):
                 success(data)
             }
