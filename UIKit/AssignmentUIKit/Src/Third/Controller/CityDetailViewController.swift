@@ -7,6 +7,6 @@
 
 import UIKit
 
-class CityDetailViewController: BaseViewController {
+final class CityDetailViewController: BaseViewController {
 
 }

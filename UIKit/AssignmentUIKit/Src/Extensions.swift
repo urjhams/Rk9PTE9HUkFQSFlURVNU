@@ -26,3 +26,25 @@ extension UITableView {
         return cell
     }
 }
+
+extension UIViewController {
+    func hideKeyboardWhenTapAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dissmissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func showActionAlert(_ title: String?, withContent content: String?, actions: [UIAlertAction]? = nil) {
+        let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
+        if let actions = actions {
+            for action in actions {
+                alert.addAction(action)
+            }
+        }
+        self.present(alert, animated: true)
+    }
+}

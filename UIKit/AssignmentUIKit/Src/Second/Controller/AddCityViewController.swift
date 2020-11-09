@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddCityViewController: BaseViewController {
+final class AddCityViewController: BaseViewController {
     
     let navigationBar: UINavigationBar = {
         let bar = UINavigationBar()
@@ -18,6 +18,8 @@ class AddCityViewController: BaseViewController {
     let nameTextField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.placeholder = "City name (e.g: London)"
+        field.borderStyle = .roundedRect
         return field
     }()
     
@@ -25,7 +27,9 @@ class AddCityViewController: BaseViewController {
     
     override func loadView() {
         super.loadView()
+        hideKeyboardWhenTapAround()
         setupNavigationBar()
+        setupViews()
     }
 }
 
@@ -68,6 +72,11 @@ extension AddCityViewController {
     }
     
     private func setupViews() {
-        
+        view.addSubview(nameTextField)
+        nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameTextField.widthAnchor.constraint(equalTo: view.widthAnchor,
+                                             constant: -32).isActive = true
+        nameTextField.topAnchor.constraint(equalTo: navigationBar.bottomAnchor,
+                                           constant: 32).isActive = true
     }
 }
