@@ -12,4 +12,5 @@ public class API {
     private static let domain = "https://api.openweathermap.org"
     public static let weatherByCityName = "\(domain)/data/2.5/weather"
     public static let weatherByCities = "\(domain)/data/2.5/group"
+    public static let weatherByCityId = "\(domain)/data/2.5/weather"
 }

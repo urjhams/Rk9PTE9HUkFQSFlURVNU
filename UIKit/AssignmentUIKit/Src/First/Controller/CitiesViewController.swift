@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CityDetailDelegate: AnyObject {
+    func didUpdateCity(_ model: CityWeather, at index: Int)
+}
+
 protocol AddCityDelegate: AnyObject {
     func didAddNewCity(_ name: String?)
 }
@@ -108,6 +112,16 @@ extension CitiesViewController: AddCityDelegate {
             } catch {
                 self?.showNotificationAlert("Error", withContent: error.localizedDescription)
             }
+        }
+    }
+}
+
+//MARK: - CityDetailDelegate
+extension CitiesViewController: CityDetailDelegate {
+    func didUpdateCity(_ model: CityWeather, at index: Int) {
+        // if index is still inside the array range
+        if cities.count > index {
+            cities[index] = model
         }
     }
 }

@@ -56,7 +56,7 @@ final class CityDetailMainTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .gray
+        selectionStyle = .none
         setupLayout()
         setupViews()
     }

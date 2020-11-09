@@ -8,7 +8,11 @@
 import UIKit
 
 final class CityDetailViewController: BaseTableViewController {
+    
+    public var delegate: CityDetailDelegate?
+    
     private var currentIndex: Int!
+    
     private var model: CityWeather? {
         didSet {
             tableView.reloadData()
@@ -32,7 +36,7 @@ final class CityDetailViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateDetail()
     }
 }
 
@@ -65,7 +69,38 @@ extension CityDetailViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+//MARK: - Network
+extension CityDetailViewController {
+    internal func updateDetail() {
+        guard let id = model?.id else { return }
+        let key = API.secrectKey
+        let url = API.weatherByCityName + "?id=\(id)&appid=\(key)"
+        
+        Network.shared.sendPostRequest(to: url) { [weak self] in
+            switch $0 {
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            case .success(let data):
+                do {
+                    let newModel = try JSONDecoder().decode(CityWeather.self, from: data)
+                    
+                    self?.model = newModel
+                    if let index = self?.currentIndex {
+                        self?.delegate?.didUpdateCity(newModel, at: index)
+                    }
+                } catch {
+                    debugPrint(error.localizedDescription)
+                }
+            }
+        }
     }
 }
