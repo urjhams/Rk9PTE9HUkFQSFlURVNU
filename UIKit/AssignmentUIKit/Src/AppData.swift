@@ -11,9 +11,9 @@ struct CityData: Codable, Equatable {
     var name: String = "none"
     var id: Int = -1
     
-    init(from cityData: CityData) {
-        name = cityData.name
-        id = cityData.id
+    init(from city: CityWeather) {
+        name = city.name
+        id = city.id
     }
     
     static func == (lhs: CityData, rhs: CityData) -> Bool {
@@ -33,12 +33,29 @@ struct CodableUserDefault<T: Codable> {
         self.defaultValue = defaultValue
     }
     
+    struct Wrapper<T> : Codable where T : Codable {
+        let wrapped : T
+    }
+    
     var wrappedValue: T {
         get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+            // Read saved JSON data from UserDefaults
+            guard let data = UserDefaults.standard.object(forKey: key) as? Data else { return defaultValue }
+            
+            // Convert the JSON to the desire data type
+            let value = try? JSONDecoder().decode(Wrapper<T>.self, from: data)
+            return value?.wrapped ?? defaultValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: key)
+            do {
+                // Convert newValue to JSON data
+                let data = try JSONEncoder().encode(Wrapper(wrapped: newValue))
+                
+                // Set the JSON data to UserDefaults
+                UserDefaults.standard.set(data, forKey: key)
+            } catch {
+                debugPrint("cannot set wrapper")
+            }
         }
     }
 }

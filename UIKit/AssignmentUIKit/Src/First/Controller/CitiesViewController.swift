@@ -16,8 +16,11 @@ final class CitiesViewController: BaseTableViewController {
     public var cities = [CityWeather]() {
         didSet {
             tableView.reloadData()
+            saveCities()
         }
     }
+    
+    private let refresher = UIRefreshControl()
     
     override func loadView() {
         super.loadView()
@@ -27,6 +30,7 @@ final class CitiesViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // load api
+        print(AppData.savedCities)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +63,17 @@ extension CitiesViewController {
         tableView.dataSource = self
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: CityTableViewCell.className)
     }
+    
+    private func setupRefresher() {
+        
+    }
+}
+
+extension CitiesViewController {
+    private func saveCities() {
+        let data = cities.map { return CityData(from: $0) }
+        AppData.savedCities = data
+    }
 }
 
 //MARK: - AddCityDelegate
@@ -76,7 +91,6 @@ extension CitiesViewController: AddCityDelegate {
                         return
                     }
                 }
-                
                 self?.cities.append(model)
             } catch {
                 self?.showNotificationAlert("Error", withContent: error.localizedDescription)
