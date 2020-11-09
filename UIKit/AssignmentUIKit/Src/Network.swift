@@ -61,7 +61,12 @@ class Network {
                                 withBearerToken token: String? = nil,
                                 parameters params: [String : Any?]? = nil,
                                 completionHandler: @escaping NetworkHandler) {
-        guard let url = URL(string: url) else {
+        guard let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else {
+            completionHandler(.failure(.badUrl))
+            return
+        }
+        guard let url = URL(string: encodedUrl) else {
             // bad url
             completionHandler(.failure(.badUrl))
             return

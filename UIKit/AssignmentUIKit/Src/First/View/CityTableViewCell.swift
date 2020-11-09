@@ -13,7 +13,7 @@ final class CityTableViewCell: UITableViewCell {
         didSet {
             cityNameLabel.text = city?.name
             let temp = city?.main?.temp ?? 0
-            cityTemperatureLabel.text = "\(temp.fromKevinToCelsius()))" + "ºC"
+            cityTemperatureLabel.text = "\(temp.fromKevinToCelsius())" + "ºC"
         }
     }
     
@@ -22,6 +22,7 @@ final class CityTableViewCell: UITableViewCell {
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.text = "City Name"
         return label
     }()

@@ -26,8 +26,13 @@ extension CitiesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let destination = CityDetailViewController()
+        let model = cities[indexPath.row]
+        let destination = CityDetailViewController(model: model, currentIndex: indexPath.row)
         navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
