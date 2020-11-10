@@ -8,7 +8,12 @@
 import SwiftUI
 
 public class CitiesFetcher: ObservableObject {
-    @Published var citiesWeather = [CityWeather]()
+    @Published var citiesWeather = [CityWeather]() {
+        didSet {
+            let data = citiesWeather.map { return CityData(from: $0) }
+            AppData.savedCities = data
+        }
+    }
     
     init() { load() }
     
