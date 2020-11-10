@@ -49,14 +49,23 @@ public class CitiesFetcher: ObservableObject {
         }
     }
     
-    public func addNewCity(_ name: String) {
+    public func addNewCity(_ name: String, failHandler: @escaping (String)->Void) {
         let key = API.secrectKey
         let url = API.weatherByCityName + "?q=\(name)&appid=\(key)"
         
         Network.shared.sendPostRequest(to: url) { result in
             switch result {
-            case .failure(_):
-                break
+            case .failure(let error):
+                switch error {
+                case .httpSeverSideError(_, statusCode: let code):
+                    failHandler(
+                        code == HTTPStatus.notFound ?
+                            "City name not found, please try again" :
+                            error.localizedDescription
+                    )
+                default:
+                    failHandler(error.localizedDescription)
+                }
             case .success(let data):
                 do {
                     let model = try JSONDecoder().decode(CityWeather.self, from: data)

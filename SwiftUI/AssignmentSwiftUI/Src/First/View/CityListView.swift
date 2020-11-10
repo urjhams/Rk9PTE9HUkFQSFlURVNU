@@ -11,6 +11,8 @@ import SwiftUIRefresh
 struct CityListView: View {
     @ObservedObject var fetcher = CitiesFetcher()
     @State private var presentAddCity = false
+    @State private var showError = false
+    @State private var errorMessage = ""
     @State private var refreshing = false
     @State private var showingSheet = false
     @State private var currentSelectedIndex = -1
@@ -34,7 +36,10 @@ struct CityListView: View {
             .navigationBarItems(trailing: Button("Add") {
                 presentAddCity = true
             }.sheet(isPresented: $presentAddCity, content: {
-                AddCityView(presented: $presentAddCity, fetcher: fetcher)
+                AddCityView(presented: $presentAddCity,
+                            fetcher: fetcher,
+                            showError: $showError,
+                            errorMessage: $errorMessage)
             }))
             .pullToRefresh(isShowing: $refreshing) {
                 self.fetcher.load {
@@ -51,7 +56,12 @@ struct CityListView: View {
             return ActionSheet(title: Text("Delete this city"),
                                message: Text("Are you sure?"),
                                buttons: [cancel, delete])
-        }
+        }.alert(isPresented: $showError, content: {
+            let confirmButton = Alert.Button.cancel(Text("Ok")) {
+                showError = false
+            }
+            return Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: confirmButton)
+        })
     }
 }
 
