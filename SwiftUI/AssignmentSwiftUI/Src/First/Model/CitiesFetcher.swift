@@ -78,4 +78,8 @@ public class CitiesFetcher: ObservableObject {
     public func setElement(at index: Int, with newElement: CityWeather) {
         citiesWeather[index] = newElement
     }
+    
+    public func deleteElement(at index: Int) {
+        citiesWeather.remove(at: index)
+    }
 }

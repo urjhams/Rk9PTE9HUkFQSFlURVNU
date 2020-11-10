@@ -12,13 +12,21 @@ struct CityListView: View {
     @ObservedObject var fetcher = CitiesFetcher()
     @State private var presentAddCity = false
     @State private var refreshing = false
+    @State private var showingSheet = false
+    @State private var currentSelectedIndex = -1
     
     var body: some View {
         NavigationView {
             List(fetcher.citiesWeather.indices, id: \.self) { index in
                 NavigationLink(destination: CityDetailView(index: index, fetcher: fetcher)) {
                     CityRowView(city: fetcher.citiesWeather[index])
+                }.onLongPressGesture {
+                    currentSelectedIndex = index
+                    showingSheet = true
                 }
+                /// on SwiftUI currently, gestures action on Navigation link only work on visible content areas
+                /// which mean spacers will trigger the normal tap behaviour from navigation link.
+                /// In this case long press gesture only work when hold on the texts in CityRowView
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarItems(trailing: Button("Add") {
@@ -31,6 +39,16 @@ struct CityListView: View {
                     self.refreshing = false
                 }
             }
+        }.actionSheet(isPresented: $showingSheet) { () -> ActionSheet in
+            let cancel = ActionSheet.Button.cancel {
+                showingSheet = false
+            }
+            let delete = ActionSheet.Button.destructive(Text("Delete")) {
+                self.fetcher.deleteElement(at: currentSelectedIndex)
+            }
+            return ActionSheet(title: Text("Delete this city"),
+                               message: Text("Are you sure?"),
+                               buttons: [cancel, delete])
         }
     }
 }
