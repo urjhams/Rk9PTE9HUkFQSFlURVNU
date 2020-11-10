@@ -16,6 +16,7 @@
 		4F255C48255AF13E00BA00F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C47255AF13E00BA00F8 /* Extensions.swift */; };
 		4F255C4D255AF36E00BA00F8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C4C255AF36E00BA00F8 /* CityDetailView.swift */; };
 		4F255C52255AFD5D00BA00F8 /* AddCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C51255AFD5D00BA00F8 /* AddCityView.swift */; };
+		4F255C5A255B08EC00BA00F8 /* CitiesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C59255B08EC00BA00F8 /* CitiesFetcher.swift */; };
 		4F857EC72559FCA4003874BE /* AssignmentSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857EC62559FCA4003874BE /* AssignmentSwiftUIApp.swift */; };
 		4F857ECB2559FCA7003874BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F857ECA2559FCA7003874BE /* Assets.xcassets */; };
 		4F857ECE2559FCA7003874BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F857ECD2559FCA7003874BE /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		4F255C47255AF13E00BA00F8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F255C4C255AF36E00BA00F8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
 		4F255C51255AFD5D00BA00F8 /* AddCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityView.swift; sourceTree = "<group>"; };
+		4F255C59255B08EC00BA00F8 /* CitiesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesFetcher.swift; sourceTree = "<group>"; };
 		4F857EC32559FCA4003874BE /* AssignmentSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F857EC62559FCA4003874BE /* AssignmentSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentSwiftUIApp.swift; sourceTree = "<group>"; };
 		4F857ECA2559FCA7003874BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				4F255C28255AEF2B00BA00F8 /* City.swift */,
+				4F255C59255B08EC00BA00F8 /* CitiesFetcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				4F255C48255AF13E00BA00F8 /* Extensions.swift in Sources */,
 				4F255C52255AFD5D00BA00F8 /* AddCityView.swift in Sources */,
 				4F255C1E255AEEFA00BA00F8 /* API.swift in Sources */,
+				4F255C5A255B08EC00BA00F8 /* CitiesFetcher.swift in Sources */,
 				4F857EC72559FCA4003874BE /* AssignmentSwiftUIApp.swift in Sources */,
 				4F255C1F255AEEFA00BA00F8 /* AppData.swift in Sources */,
 				4F255C40255AF02D00BA00F8 /* CityRowView.swift in Sources */,
