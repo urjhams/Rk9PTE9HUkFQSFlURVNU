@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F255C1E255AEEFA00BA00F8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C1C255AEEFA00BA00F8 /* API.swift */; };
+		4F255C1F255AEEFA00BA00F8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C1D255AEEFA00BA00F8 /* AppData.swift */; };
+		4F255C24255AEF1800BA00F8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C23255AEF1800BA00F8 /* Network.swift */; };
+		4F255C29255AEF2B00BA00F8 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C28255AEF2B00BA00F8 /* City.swift */; };
+		4F255C38255AEFEF00BA00F8 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C37255AEFEF00BA00F8 /* CityListView.swift */; };
+		4F255C40255AF02D00BA00F8 /* CityRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C3F255AF02D00BA00F8 /* CityRowView.swift */; };
+		4F255C48255AF13E00BA00F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C47255AF13E00BA00F8 /* Extensions.swift */; };
+		4F255C4D255AF36E00BA00F8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C4C255AF36E00BA00F8 /* CityDetailView.swift */; };
+		4F255C52255AFD5D00BA00F8 /* AddCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F255C51255AFD5D00BA00F8 /* AddCityView.swift */; };
 		4F857EC72559FCA4003874BE /* AssignmentSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857EC62559FCA4003874BE /* AssignmentSwiftUIApp.swift */; };
-		4F857EC92559FCA4003874BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857EC82559FCA4003874BE /* ContentView.swift */; };
 		4F857ECB2559FCA7003874BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F857ECA2559FCA7003874BE /* Assets.xcassets */; };
 		4F857ECE2559FCA7003874BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F857ECD2559FCA7003874BE /* Preview Assets.xcassets */; };
 		4F857ED92559FCA8003874BE /* AssignmentSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857ED82559FCA8003874BE /* AssignmentSwiftUITests.swift */; };
@@ -33,9 +41,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F255C1C255AEEFA00BA00F8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		4F255C1D255AEEFA00BA00F8 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		4F255C23255AEF1800BA00F8 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		4F255C28255AEF2B00BA00F8 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		4F255C37255AEFEF00BA00F8 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
+		4F255C3F255AF02D00BA00F8 /* CityRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRowView.swift; sourceTree = "<group>"; };
+		4F255C47255AF13E00BA00F8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4F255C4C255AF36E00BA00F8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
+		4F255C51255AFD5D00BA00F8 /* AddCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityView.swift; sourceTree = "<group>"; };
 		4F857EC32559FCA4003874BE /* AssignmentSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F857EC62559FCA4003874BE /* AssignmentSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentSwiftUIApp.swift; sourceTree = "<group>"; };
-		4F857EC82559FCA4003874BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4F857ECA2559FCA7003874BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F857ECD2559FCA7003874BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4F857ECF2559FCA7003874BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +88,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F255C2D255AEF5100BA00F8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C47255AF13E00BA00F8 /* Extensions.swift */,
+				4F255C23255AEF1800BA00F8 /* Network.swift */,
+				4F255C1C255AEEFA00BA00F8 /* API.swift */,
+				4F255C1D255AEEFA00BA00F8 /* AppData.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4F255C2E255AEF6100BA00F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C28255AEF2B00BA00F8 /* City.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F255C2F255AEF8500BA00F8 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C2D255AEF5100BA00F8 /* Helper */,
+				4F255C33255AEFA900BA00F8 /* First */,
+				4F255C34255AEFAF00BA00F8 /* Second */,
+				4F255C35255AEFB700BA00F8 /* Third */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		4F255C33255AEFA900BA00F8 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C2E255AEF6100BA00F8 /* Model */,
+				4F255C36255AEFDC00BA00F8 /* View */,
+			);
+			path = First;
+			sourceTree = "<group>";
+		};
+		4F255C34255AEFAF00BA00F8 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C51255AFD5D00BA00F8 /* AddCityView.swift */,
+			);
+			path = Second;
+			sourceTree = "<group>";
+		};
+		4F255C35255AEFB700BA00F8 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C4C255AF36E00BA00F8 /* CityDetailView.swift */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		4F255C36255AEFDC00BA00F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F255C37255AEFEF00BA00F8 /* CityListView.swift */,
+				4F255C3F255AF02D00BA00F8 /* CityRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4F857EBA2559FCA4003874BE = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +175,8 @@
 		4F857EC52559FCA4003874BE /* AssignmentSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				4F255C2F255AEF8500BA00F8 /* Src */,
 				4F857EC62559FCA4003874BE /* AssignmentSwiftUIApp.swift */,
-				4F857EC82559FCA4003874BE /* ContentView.swift */,
 				4F857ECA2559FCA7003874BE /* Assets.xcassets */,
 				4F857ECF2559FCA7003874BE /* Info.plist */,
 				4F857ECC2559FCA7003874BE /* Preview Content */,
@@ -259,8 +339,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F857EC92559FCA4003874BE /* ContentView.swift in Sources */,
+				4F255C24255AEF1800BA00F8 /* Network.swift in Sources */,
+				4F255C4D255AF36E00BA00F8 /* CityDetailView.swift in Sources */,
+				4F255C29255AEF2B00BA00F8 /* City.swift in Sources */,
+				4F255C38255AEFEF00BA00F8 /* CityListView.swift in Sources */,
+				4F255C48255AF13E00BA00F8 /* Extensions.swift in Sources */,
+				4F255C52255AFD5D00BA00F8 /* AddCityView.swift in Sources */,
+				4F255C1E255AEEFA00BA00F8 /* API.swift in Sources */,
 				4F857EC72559FCA4003874BE /* AssignmentSwiftUIApp.swift in Sources */,
+				4F255C1F255AEEFA00BA00F8 /* AppData.swift in Sources */,
+				4F255C40255AF02D00BA00F8 /* CityRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.quan.AssignmentSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,7 +540,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.quan.AssignmentSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
