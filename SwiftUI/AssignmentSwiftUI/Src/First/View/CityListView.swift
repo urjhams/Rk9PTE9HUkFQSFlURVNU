@@ -13,11 +13,13 @@ struct CityListView: View {
     
     var body: some View {
         NavigationView {
-            List(fetcher.citiesWeather, id: \.id) { item in
-                NavigationLink(destination: CityDetailView()) {
-                    CityRowView(city: item)
+            List(fetcher.citiesWeather.indices, id: \.self) { index in
+                NavigationLink(destination: CityDetailView(index: index, fetcher: fetcher)) {
+                    CityRowView(city: fetcher.citiesWeather[index])
                 }
-            }.navigationBarItems(trailing: Button("Add") {
+            }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarItems(trailing: Button("Add") {
                 presentAddCity = true
             }.sheet(isPresented: $presentAddCity, content: {
                 AddCityView(presented: $presentAddCity, fetcher: fetcher)
@@ -25,7 +27,6 @@ struct CityListView: View {
         }
     }
 }
-
 
 struct CityListView_Previews: PreviewProvider {
     static var previews: some View {

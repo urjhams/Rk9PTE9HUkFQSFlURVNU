@@ -5,14 +5,14 @@
 //  Created by Quân Đinh on 09.11.20.
 //
 
-import Foundation
+import SwiftUI
 
 struct ListCityWeather: Codable {
     var cnt: Int
     var list: [CityWeather]?
 }
 
-struct CityWeather: Codable {
+public struct CityWeather: Codable {
     var coord: Coordinate      // always have
     var weather: [Weather]     // always have
     var base: String?

@@ -73,4 +73,8 @@ public class CitiesFetcher: ObservableObject {
             }
         }
     }
+    
+    public func setElement(at index: Int, with newElement: CityWeather) {
+        citiesWeather[index] = newElement
+    }
 }
