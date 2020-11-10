@@ -21,6 +21,8 @@ struct CityListView: View {
                 NavigationLink(destination: CityDetailView(index: index, fetcher: fetcher)) {
                     CityRowView(city: fetcher.citiesWeather[index])
                 }.onLongPressGesture {
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
                     currentSelectedIndex = index
                     showingSheet = true
                 }
