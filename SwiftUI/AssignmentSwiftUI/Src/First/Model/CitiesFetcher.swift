@@ -15,9 +15,9 @@ public class CitiesFetcher: ObservableObject {
         }
     }
     
-    init() { load() }
+    init() { load {} }
     
-    public func load() {
+    public func load(_ done: @escaping ()->Void) {
         guard AppData.savedCities.count > 0 else { return }
         let list = AppData.savedCities
         let ids = list.map { return $0.id }
@@ -36,8 +36,9 @@ public class CitiesFetcher: ObservableObject {
         Network.shared.sendPostRequest(to: url) { result in
             switch result {
             case .failure(_):
-                break
+                done()
             case .success(let data):
+                done()
                 do {
                     let decoded = try JSONDecoder().decode(ListCityWeather.self, from: data)
                     if let list = decoded.list { self.citiesWeather = list }

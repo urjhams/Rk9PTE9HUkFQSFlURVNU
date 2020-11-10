@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		4F857ECE2559FCA7003874BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F857ECD2559FCA7003874BE /* Preview Assets.xcassets */; };
 		4F857ED92559FCA8003874BE /* AssignmentSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857ED82559FCA8003874BE /* AssignmentSwiftUITests.swift */; };
 		4F857EE42559FCA8003874BE /* AssignmentSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F857EE32559FCA8003874BE /* AssignmentSwiftUIUITests.swift */; };
+		4F9A8347255B260C008094A6 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 4F9A8346255B260C008094A6 /* SwiftUIRefresh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9A8347255B260C008094A6 /* SwiftUIRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +231,9 @@
 			dependencies = (
 			);
 			name = AssignmentSwiftUI;
+			packageProductDependencies = (
+				4F9A8346255B260C008094A6 /* SwiftUIRefresh */,
+			);
 			productName = AssignmentSwiftUI;
 			productReference = 4F857EC32559FCA4003874BE /* AssignmentSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +305,9 @@
 				Base,
 			);
 			mainGroup = 4F857EBA2559FCA4003874BE;
+			packageReferences = (
+				4F9A8345255B260C008094A6 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+			);
 			productRefGroup = 4F857EC42559FCA4003874BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -672,6 +680,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4F9A8345255B260C008094A6 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4F9A8346255B260C008094A6 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F9A8345255B260C008094A6 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4F857EBB2559FCA4003874BE /* Project object */;
 }

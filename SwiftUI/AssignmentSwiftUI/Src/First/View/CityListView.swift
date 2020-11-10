@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct CityListView: View {
     @ObservedObject var fetcher = CitiesFetcher()
-    @State var presentAddCity = false
+    @State private var presentAddCity = false
+    @State private var refreshing = false
     
     var body: some View {
         NavigationView {
@@ -24,6 +26,11 @@ struct CityListView: View {
             }.sheet(isPresented: $presentAddCity, content: {
                 AddCityView(presented: $presentAddCity, fetcher: fetcher)
             }))
+            .pullToRefresh(isShowing: $refreshing) {
+                self.fetcher.load {
+                    self.refreshing = false
+                }
+            }
         }
     }
 }
