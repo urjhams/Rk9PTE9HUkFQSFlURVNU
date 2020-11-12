@@ -24,7 +24,7 @@ struct CityData: Codable, Equatable {
 }
 
 @propertyWrapper
-struct CodableUserDefault<T: Codable> {
+struct CodableUserDefault<T> where T: Codable {
     let key: String
     let defaultValue: T
     
@@ -33,23 +33,19 @@ struct CodableUserDefault<T: Codable> {
         self.defaultValue = defaultValue
     }
     
-    struct Wrapper<T> : Codable where T : Codable {
-        let wrapped : T
-    }
-    
     var wrappedValue: T {
         get {
             // Read saved JSON data from UserDefaults
             guard let data = UserDefaults.standard.object(forKey: key) as? Data else { return defaultValue }
             
             // Convert the JSON to the desire data type
-            let value = try? JSONDecoder().decode(Wrapper<T>.self, from: data)
-            return value?.wrapped ?? defaultValue
+            let value = try? JSONDecoder().decode(T.self, from: data)
+            return value ?? defaultValue
         }
         set {
             do {
                 // Convert newValue to JSON data
-                let data = try JSONEncoder().encode(Wrapper(wrapped: newValue))
+                let data: Decodable = try JSONEncoder().encode(newValue)
                 
                 // Set the JSON data to UserDefaults
                 UserDefaults.standard.set(data, forKey: key)
