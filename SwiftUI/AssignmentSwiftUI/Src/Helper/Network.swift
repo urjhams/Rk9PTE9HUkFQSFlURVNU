@@ -109,7 +109,11 @@ class Network {
                  }
                 
                  DispatchQueue.main.async {
-                     completionHandler(.failure(.httpSeverSideError(responseBody, statusCode: statusCode)))
+                     completionHandler(
+                        .failure(
+                            .httpSeverSideError(responseBody, statusCode: statusCode)
+                        )
+                     )
                  }
                  return
             }

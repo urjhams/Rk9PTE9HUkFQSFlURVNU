@@ -36,7 +36,8 @@ struct CodableUserDefault<T> where T: Codable {
     var wrappedValue: T {
         get {
             // Read saved JSON data from UserDefaults
-            guard let data = UserDefaults.standard.object(forKey: key) as? Data else { return defaultValue }
+            guard let data = UserDefaults.standard.object(forKey: key) as? Data
+            else { return defaultValue }
             
             // Convert the JSON to the desire data type
             let value = try? JSONDecoder().decode(T.self, from: data)
