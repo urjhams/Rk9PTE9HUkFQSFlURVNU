@@ -11,22 +11,18 @@ struct CityDetailView: View {
     var index: Int
     @ObservedObject var fetcher: CitiesFetcher
     
-    fileprivate func extractedFunc() {
-        Text("\(fetcher.citiesWeather[index].name)")
-            .font(.system(size: 24, weight: .bold, design: .default))
-        Text("\(fetcher.citiesWeather[index].weather.first?.description ?? "")")
-            .font(.system(size: 18))
-        Text("\(Int(fetcher.citiesWeather[index].main.temp.fromKevinToCelsius()))" + "ºC")
-            .font(.system(size: 40, weight: .bold, design: .default))
-        Text("humidity: \(fetcher.citiesWeather[index].main.humidity)" + "%")
-            .font(.system(size: 18))
-        Spacer()
-    }
-    
     var body: some View {
         ScrollView {
             if index < fetcher.citiesWeather.count {
-                extractedFunc()
+                Text("\(fetcher.citiesWeather[index].name)")
+                    .font(.system(size: 24, weight: .bold, design: .default))
+                Text("\(fetcher.citiesWeather[index].weather.first?.description ?? "")")
+                    .font(.system(size: 18))
+                Text("\(Int(fetcher.citiesWeather[index].main.temp.fromKevinToCelsius()))" + "ºC")
+                    .font(.system(size: 40, weight: .bold, design: .default))
+                Text("humidity: \(fetcher.citiesWeather[index].main.humidity)" + "%")
+                    .font(.system(size: 18))
+                Spacer()
             }
         }.onAppear(perform: {
             updateDetail()
