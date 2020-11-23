@@ -20,7 +20,9 @@ struct CityListView: View {
     var body: some View {
         NavigationView {
             List(fetcher.citiesWeather.indices, id: \.self) { index in
-                NavigationLink(destination: CityDetailView(index: index, fetcher: fetcher)) {
+                NavigationLink(destination: CityDetailView(index: index,
+                                                           fetcher: fetcher)
+                ) {
                     CityRowView(city: fetcher.citiesWeather[index])
                 }.onLongPressGesture {
                     let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -60,7 +62,11 @@ struct CityListView: View {
             let confirmButton = Alert.Button.cancel(Text("Ok")) {
                 showError = false
             }
-            return Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: confirmButton)
+            return Alert(
+                title: Text("Error"),
+                message: Text(errorMessage),
+                dismissButton: confirmButton
+            )
         })
     }
 }
