@@ -63,8 +63,9 @@ extension CitiesViewController {
     }
     
     private func setupTableView() {
+        tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         
         tableView.delegate = self
         tableView.dataSource = self

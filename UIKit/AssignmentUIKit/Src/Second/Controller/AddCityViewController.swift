@@ -11,6 +11,9 @@ final class AddCityViewController: BaseViewController {
     
     private let navigationBar: UINavigationBar = {
         let bar = UINavigationBar()
+        bar.setBackgroundImage(UIImage(), for: .default)
+        bar.shadowImage = UIImage()
+        bar.isTranslucent = true
         bar.translatesAutoresizingMaskIntoConstraints = false
         return bar
     }()

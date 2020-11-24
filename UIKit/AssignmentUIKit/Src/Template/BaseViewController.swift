@@ -11,7 +11,7 @@ class BaseViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .tertiarySystemBackground
     }
 
 }
