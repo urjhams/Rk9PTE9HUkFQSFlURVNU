@@ -36,6 +36,7 @@ final class CityDetailViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         updateDetail()
     }
 }
