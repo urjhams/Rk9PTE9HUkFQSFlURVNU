@@ -10,7 +10,7 @@ import SwiftUI
 public class CitiesFetcher: ObservableObject {
     @Published var citiesWeather = [CityWeather]() {
         didSet {
-            let data = citiesWeather.map { return CityData(from: $0) }
+            let data = citiesWeather.map { CityData(from: $0) }
             AppData.savedCities = data
         }
     }
@@ -33,7 +33,7 @@ public class CitiesFetcher: ObservableObject {
         
         // final url
         url = url + "&appid=\(key)"
-        Network.shared.sendPostRequest(to: url) { result in
+        Network.shared.sendPostRequest(to: url) { [weak self] result in
             switch result {
             case .failure(_):
                 done()
@@ -41,10 +41,8 @@ public class CitiesFetcher: ObservableObject {
                 done()
                 do {
                     let decoded = try JSONDecoder().decode(ListCityWeather.self, from: data)
-                    if let list = decoded.list { self.citiesWeather = list }
-                } catch {
-                    break
-                }
+                    if let list = decoded.list { self?.citiesWeather = list }
+                } catch { break }
             }
         }
     }
@@ -53,13 +51,14 @@ public class CitiesFetcher: ObservableObject {
         let key = API.secrectKey
         let url = API.weatherByCityName + "?q=\(name)&appid=\(key)"
         
-        Network.shared.sendPostRequest(to: url) { result in
+        Network.shared.sendPostRequest(to: url) { [weak self] result in
             switch result {
             case .failure(let error):
                 switch error {
                 case .httpSeverSideError(_, statusCode: let code):
                     failHandler(
-                        code == HTTPStatus.notFound ?
+                        code ==
+                            HTTPStatus.notFound ?
                             "City name not found, please try again" :
                             error.localizedDescription
                     )
@@ -69,17 +68,15 @@ public class CitiesFetcher: ObservableObject {
             case .success(let data):
                 do {
                     let model = try JSONDecoder().decode(CityWeather.self, from: data)
-                    for index in 0..<self.citiesWeather.count {
+                    for index in 0..<(self?.citiesWeather.count ?? 0) {
                         // if city is already added, just reload the data
-                        if model.id == self.citiesWeather[index].id {
-                            self.citiesWeather[index] = model
+                        if model.id == self?.citiesWeather[index].id {
+                            self?.citiesWeather[index] = model
                             return
                         }
                     }
-                    self.citiesWeather.append(model)
-                } catch {
-                    break
-                }
+                    self?.citiesWeather.append(model)
+                } catch { break }
             }
         }
     }

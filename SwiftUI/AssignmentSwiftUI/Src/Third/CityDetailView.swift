@@ -13,20 +13,28 @@ struct CityDetailView: View {
     
     var body: some View {
         ScrollView {
-            if index < fetcher.citiesWeather.count {
-                Text("\(fetcher.citiesWeather[index].name)")
-                    .font(.system(size: 24, weight: .bold, design: .default))
-                Text("\(fetcher.citiesWeather[index].weather.first?.description ?? "")")
-                    .font(.system(size: 18))
-                Text("\(Int(fetcher.citiesWeather[index].main.temp.fromKevinToCelsius()))" + "ºC")
-                    .font(.system(size: 40, weight: .bold, design: .default))
-                Text("humidity: \(fetcher.citiesWeather[index].main.humidity)" + "%")
-                    .font(.system(size: 18))
-                Spacer()
-            }
+            mainContentView
         }.onAppear(perform: {
             updateDetail()
         })
+    }
+    
+    @ViewBuilder private var mainContentView: some View {
+        if index < fetcher.citiesWeather.count {
+            Text("\(fetcher.citiesWeather[index].name)")
+                .font(.system(size: 24, weight: .bold, design: .default))
+            
+            Text("\(fetcher.citiesWeather[index].weather.first?.description ?? "")")
+                .font(.system(size: 18))
+            
+            Text("\(Int(fetcher.citiesWeather[index].main.temp.fromKevinToCelsius()))" + "ºC")
+                .font(.system(size: 40, weight: .bold, design: .default))
+            
+            Text("humidity: \(fetcher.citiesWeather[index].main.humidity)" + "%")
+                .font(.system(size: 18))
+            
+            Spacer()
+        }
     }
 }
 

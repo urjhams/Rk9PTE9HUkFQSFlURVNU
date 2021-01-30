@@ -17,22 +17,31 @@ struct AddCityView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("City name (e.g: London)",
-                          text: $cityName)
+                TextField("City name (e.g: London)", text: $cityName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Spacer()
             }.padding()
             .navigationBarItems(
-                leading: Button("Cancel"){ presented = false },
-                trailing: Button("Save") {
-                    presented = false
-                    fetcher.addNewCity(cityName) { error in
-                        self.errorMessage = error
-                        self.showError = true
-                    }
-                }.disabled(cityName == "")
+                leading: cancelButton,
+                trailing: saveButton
             )
         }
+    }
+    
+    private var cancelButton: some View {
+        Button("Cancel") {
+            presented = false
+        }
+    }
+    
+    private var saveButton: some View {
+        Button("Save") {
+            presented = false
+            fetcher.addNewCity(cityName) { error in
+                errorMessage = error
+                showError = true
+            }
+        }.disabled(cityName == "")
     }
 }
